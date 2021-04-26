@@ -3,8 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BerriesBush : MonoBehaviour
+public class BerriesBush : Interactable
 {
+    public Item item;
 
     private bool _isInteractionAllowed;
     private bool _isEmpty;
@@ -23,7 +24,7 @@ public class BerriesBush : MonoBehaviour
     void Update()
     {
         if (_isInteractionAllowed && Input.GetKeyDown(KeyCode.E))
-            PickUp();
+            Interact();
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -42,17 +43,32 @@ public class BerriesBush : MonoBehaviour
         }
     }
 
-    private void PickUp()
+    public override void Interact()
     {
         _isEmpty = true;
         _isInteractionAllowed = false;
+
+        bool wasPickedUp = false;
         
         if (spriteRenderer.sprite.name == "bush")
         {
             spriteRenderer.sprite = Resources.Load<Sprite>("Interactable/BerriesBush/bushEmpty");
+            wasPickedUp = Inventory.instanse.Add(item);
         }
 
+        if (wasPickedUp)
+        {
+            SendBushToCooldown();
+        }
+        else
+        {
+            
+        }
+    }
 
+    private void SendBushToCooldown()
+    {
+        
     }
 
 }
