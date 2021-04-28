@@ -59,9 +59,9 @@ public class Inventory : MonoBehaviour
     public bool Remove(Item item, int amount = 1)
     {
         // Return true if item should be removed from inventory and false if only a small amount is removed
-        
+
         if (!items.ContainsKey(item))
-            throw new NullReferenceException("item is Empty");
+            return false;
         
         if (items[item] <= amount)
         {
@@ -76,5 +76,12 @@ public class Inventory : MonoBehaviour
             return false;
         }
         
+    }
+
+    public bool hasFreeSpace()
+    {
+        if (Inventory.instanse.items.Count < space)
+            return true;
+        return false;
     }
 }

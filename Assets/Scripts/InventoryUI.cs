@@ -5,6 +5,7 @@ public class InventoryUI : MonoBehaviour
 {
     public Transform itemsParent;
     public GameObject inventoryUI;
+    //public GameObject craftUI;
     
     private Inventory inventory;
 
@@ -25,6 +26,13 @@ public class InventoryUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
+
+            /*
+             if (!inventoryUI.activeSelf)
+            {
+                craftUI.SetActive(false);
+            }
+            */
         }
     }
     

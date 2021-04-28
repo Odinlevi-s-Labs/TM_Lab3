@@ -41,8 +41,7 @@ public class InventorySlot : MonoBehaviour
 
     public void OnRemoveButton()
     {
-        bool shouldSlotBeCleared = Inventory.instanse.Remove(item);
-        if (shouldSlotBeCleared)
+        if (Inventory.instanse.Remove(item))
             ClearSlot();
     }
 
@@ -50,7 +49,8 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            if (item.Use())
+                ClearSlot();
         }
     }
 }

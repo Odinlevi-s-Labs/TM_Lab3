@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BerriesBush : Interactable
 {
-    public Item item;
+    public Food item;
 
     private bool _isInteractionAllowed;
     private bool _isEmpty;
