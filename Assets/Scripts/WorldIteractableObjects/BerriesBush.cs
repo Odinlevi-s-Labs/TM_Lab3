@@ -45,24 +45,20 @@ public class BerriesBush : Interactable
 
     public override void Interact()
     {
-        _isEmpty = true;
         _isInteractionAllowed = false;
 
         bool wasPickedUp = false;
         
         if (spriteRenderer.sprite.name == "bush")
         {
-            spriteRenderer.sprite = Resources.Load<Sprite>("Interactable/BerriesBush/bushEmpty");
             wasPickedUp = Inventory.instanse.Add(item);
         }
 
         if (wasPickedUp)
         {
+            _isEmpty = true;
+            spriteRenderer.sprite = Resources.Load<Sprite>("Interactable/BerriesBush/bushEmpty");
             SendBushToCooldown();
-        }
-        else
-        {
-            
         }
     }
 
