@@ -8,16 +8,19 @@ public class Craft : MonoBehaviour
     
     public delegate void OnItemChanged();
     
-    public OnItemChanged onItemChangedCallback;
+    public OnItemChanged onCraftChangedCallback;
     
     public int space = 2;
     
     public Dictionary<Item, int> items = new Dictionary<Item, int>();
-    public Item resultItem = null;
+    public Item resultItem;
+    public Recipe resultRecipe;
     
     private void Awake()
     {
         instanse = this;
+        resultItem = null;
+        resultRecipe = null;
     }
 
     public void ProposeToCraft(Recipe recipe)
@@ -27,8 +30,9 @@ public class Craft : MonoBehaviour
             items[recipe.item1] = recipe.amount1;
             items[recipe.item2] = recipe.amount2;
             resultItem = recipe.resultItem;
+            resultRecipe = recipe;
             
-            onItemChangedCallback?.Invoke();
+            onCraftChangedCallback?.Invoke();
             // Inventory.instanse.Remove(recipe.item1, recipe.amount1);
             // Inventory.instanse.Remove(recipe.item2, recipe.amount2);
         }
@@ -44,7 +48,7 @@ public class Craft : MonoBehaviour
             
             ResetCraft();
             
-            onItemChangedCallback?.Invoke();
+            onCraftChangedCallback?.Invoke();
         }
     }
 
@@ -53,15 +57,18 @@ public class Craft : MonoBehaviour
         items[recipe.item1] = recipe.amount1;
         items[recipe.item2] = recipe.amount2;
         resultItem = recipe.resultItem;
+
+        resultRecipe = recipe;
         
-        onItemChangedCallback?.Invoke();
+        onCraftChangedCallback?.Invoke();
     }
 
     public void ResetCraft()
     {
         items.Clear();
         resultItem = null;
+        resultRecipe = null;
         
-        onItemChangedCallback?.Invoke();
+        onCraftChangedCallback?.Invoke();
     }
 }

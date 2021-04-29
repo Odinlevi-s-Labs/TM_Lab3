@@ -46,6 +46,12 @@ public class InventoryUI : MonoBehaviour
             {
                 slots[i].AddItem(arrayOfInventoryItems[i], inventory.items[arrayOfInventoryItems[i]]);
             }
+            else
+            {
+                slots[i].ClearSlot();
+            }
         }
+
+        Craft.instanse.onCraftChangedCallback.Invoke();
     }
 }

@@ -18,6 +18,7 @@ public class ResultSlot : MonoBehaviour
         icon.sprite = recipe.icon;
         icon.enabled = true;
         removeButton.interactable = true;
+        resultCraftButton.interactable = recipe.CanBeCrafted();
     }
 
     public void ClearSlot()
@@ -26,13 +27,14 @@ public class ResultSlot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+        resultCraftButton.interactable = true;
         removeButton.interactable = false;
     }
 
-    public void SetResultButtonState(bool isActive)
-    {
-        resultCraftButton.interactable = isActive;
-    }
+    // public void SetResultButtonState(bool isInteractable)
+    // {
+    //     resultCraftButton.interactable = isInteractable;
+    // }
 
     public void OnRemoveButton()
     {

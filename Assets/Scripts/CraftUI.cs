@@ -20,11 +20,12 @@ public class CraftUI : MonoBehaviour
     void Start()
     {
         craft = Craft.instanse;
-        craft.onItemChangedCallback += UpdateUI;
+        craft.onCraftChangedCallback += UpdateUI;
         
         craftSlots = itemsParent.GetComponentsInChildren<CraftSlot>();
         resultSlot = itemsParent.GetComponentInChildren<ResultSlot>();
         recipeSlots = itemsParent.GetComponentsInChildren<RecipeSlot>();
+        
     }
 
     // Update is called once per frame
@@ -55,11 +56,15 @@ public class CraftUI : MonoBehaviour
             {
                 craftSlots[i].AddItem(arrayOfCraftItems[i], craft.items[arrayOfCraftItems[i]]);
             }
+            else
+            {
+                craftSlots[i].ClearSlot();
+            }
         }
 
         foreach (var slot in recipeSlots)
         {
-            if (slot.recipe.CanBeCrafted())
+            if (slot.recipe != null && slot.recipe.CanBeCrafted())
             {
                 var color = slot.icon.color;
                 color.a = 256;
@@ -72,14 +77,14 @@ public class CraftUI : MonoBehaviour
                 slot.icon.color = color;
             }
         }
-        
-        if (resultSlot != null && resultSlot.recipe.CanBeCrafted())
+
+        if (craft.resultRecipe != null)
         {
-            resultSlot.SetResultButtonState(true);
+            resultSlot.AddResult(craft.resultRecipe);
         }
         else
         {
-            resultSlot.SetResultButtonState(false);
+            resultSlot.ClearSlot();
         }
     }
 }
