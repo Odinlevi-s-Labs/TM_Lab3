@@ -7,7 +7,8 @@ public class Food : Item
     public override bool Use()
     {
         base.Use();
-        Debug.Log("Should refill " + hungerRefilling + " hunger");
+        
+        Stats.instanse.IncreaseHunger(hungerRefilling);
         return Inventory.instanse.Remove(this);
     }
 }

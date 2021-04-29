@@ -6,9 +6,9 @@ public class Craft : MonoBehaviour
 {
     public static Craft instanse;
     
-    public delegate void OnItemChanged();
+    public delegate void OnCraftChanged();
     
-    public OnItemChanged onCraftChangedCallback;
+    public OnCraftChanged onCraftChangedCallback;
     
     public int space = 2;
     

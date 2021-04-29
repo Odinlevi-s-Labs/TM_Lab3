@@ -8,8 +8,13 @@ public class Weapon : Item
     public override bool Use()
     {
         base.Use();
-        Debug.Log("Should equip " + this.name + "");
+        var success = Equipment.instanse.Add(this);
         
-        return Inventory.instanse.Remove(this);
+        if (success)
+            Debug.Log(this.name+" was equipped.");
+        else
+            Debug.Log(this.name+" wasn't equipped.");
+        
+        return true;
     }
 }
