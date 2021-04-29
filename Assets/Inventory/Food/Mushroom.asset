@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a47c66be40782946ab03b0b48d3587d, type: 3}
+  m_Name: Mushroom
+  m_EditorClassIdentifier: 
+  name: Mushroom
+  icon: {fileID: 21300000, guid: 565740a99d3aac24883d2398d50a719a, type: 3}
+  maximumInStack: 999
+  hungerRefilling: 1
