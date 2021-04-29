@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     
     public virtual bool Use()
     {
-        return true;
+        return false;
     }
 
 }
